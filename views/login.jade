@@ -1,0 +1,15 @@
+doctype
+html
+	head
+		title Todo List
+	body
+		|Todo List Login Form
+		form(action='/login' method='post')
+			|name
+			input(type='text' name='username')
+			|password
+			input(type='password' name='password')
+			input(type='hidden' name='oauth2_redirect' value=redirect)
+			input(type='hidden' name='oauth2_clientId' value=clientId)
+			input(type='hidden' name='oauth2_state' value=state)
+			button(type='submit') Login

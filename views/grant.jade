@@ -1,0 +1,18 @@
+doctype
+html
+	head
+		title OAuth Classroom Server - Not for Production Use
+	body
+		p
+			|An application with the client id 
+			=clientId
+			|  is asking for access to your todo lists.
+		p Do you want to grant this application access to your todo list data?		
+		form(action='/grant' method='post')
+			select(name='allow')
+				option grant
+				option deny			
+			input(type='hidden' name='oauth2_redirect' value=redirect)
+			input(type='hidden' name='oauth2_clientId' value=clientId)
+			input(type='hidden' name='oauth2_state' value=state)
+			button(type='submit') Submit

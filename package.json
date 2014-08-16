@@ -1,0 +1,13 @@
+{
+  "name": "oauth-classroom",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "4.x",
+    "body-parser": "1.x",
+    "jade" : "*"
+  },
+  "author": "Ronnie Mitra",
+  "license": "ISC"
+}
