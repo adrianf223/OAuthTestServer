@@ -3,6 +3,8 @@ html
 	head
 		title Todo List
 	body
+		if message
+			h3= message
 		|Todo List Login Form
 		form(action='/login' method='post')
 			|name

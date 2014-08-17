@@ -73,9 +73,15 @@ app.post('/login', function(req, res) {
 	var redirect = req.param('oauth2_redirect');
 	var clientId = req.param('oauth2_clientId');
 	var state = req.param('oauth2_state');
+	
+	if( username.trim() != 'student' && password.trim() != 'mypassword' ) {
+		res.render('login', {clientId: clientId, redirect: redirect, state: state, message: 'Invalid Login Credentials.  Please try again:'});
+	}else {
+		// Present a grant screen
+		res.render('grant', {clientId: clientId, redirect: redirect, state: state});
+	}
 		
-	// Present a grant screen
-	res.render('grant', {clientId: clientId, redirect: redirect, state: state});
+	
 });
 
 app.post('/grant', function(req, res) {
@@ -158,7 +164,14 @@ app.get('/todos', function(req, res) {
 	
 	// Validate the bearer token and return a response
 	if( accessTokens[bearerToken]) {
-		res.send('succesful');
+		var todoList = {
+			todos: [
+				{name: 'learn OAuth 2 ', status: 'in progress'},
+				{name: 'exploit an API', status: 'complete'},
+				{name: 'learn API styles', status: 'complete'}				
+			]
+		};
+		res.send(todoList);
 	} else {
 		res.send(401, 'You are not authorized to retrieve this todo list.');
 	}
